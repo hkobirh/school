@@ -18,7 +18,7 @@ class CreateAssignSubjectsTable extends Migration
             $table->integer('subject_id');
             $table->double('full_mark');
             $table->double('pass_mark');
-            $table->double('get_mark');
+            $table->double('subjective_mark');
             $table->timestamps();
         });
     }

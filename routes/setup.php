@@ -79,8 +79,8 @@ Route::prefix('setups')->name('setup.')->group(function (){
     Route::get('/assign/subject/view',[SubjectAssignController::class,'view'])->name('subject.assign.view');
     Route::get('/assign/subject/create',[SubjectAssignController::class,'create'])->name('subject.assign.create');
     Route::post('/assign/subject/add',[SubjectAssignController::class,'store'])->name('subject.assign.add');
-    Route::get('/assign/subject/edit/{id}',[SubjectAssignController::class,'edit'])->name('subject.assign.edit');
-    Route::post('/assign/subject/edit/{id}',[SubjectAssignController::class,'update'])->name('subject.assign.update');
-    Route::get('/assign/subject/delete/{id}',[SubjectAssignController::class,'delete'])->name('subject.assign.delete');
-
+    Route::get('/assign/subject/edit/{class_id}',[SubjectAssignController::class,'edit'])->name('subject.assign.edit');
+    Route::post('/assign/subject/edit/{class_id}',[SubjectAssignController::class,'update'])->name('subject.assign.update');
+    Route::get('/assign/subject/delete/{class_id}',[SubjectAssignController::class,'delete'])->name('subject.assign.delete');
+    Route::get('/assign/subject/details/{class_id}',[SubjectAssignController::class,'details'])->name('subject.assign.details');
 });

@@ -47,7 +47,7 @@
                 <li> <a href="{{route('setup.fee.amount.view')}}"><i class="bx bx-circle"></i>Manage fee amount</a></li>
                 <li> <a href="{{route('setup.exam.type.view')}}"><i class="bx bx-circle"></i>Manage exam type</a></li>
                 <li> <a href="{{route('setup.subject.view')}}"><i class="bx bx-circle"></i>Manage subject</a></li>
-                <li> <a href="{{route('setup.assign.subject.view')}}"><i class="bx bx-circle"></i>Manage assign subject</a></li>
+                <li> <a href="{{route('setup.subject.assign.view')}}"><i class="bx bx-circle"></i>Manage assign subject</a></li>
             </ul>
         </li>
 

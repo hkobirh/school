@@ -66,7 +66,7 @@
                                         <select name="class_id[]" id="class"
                                                 class="result form-control">
                                             <option value="">Select class</option>
-                                            @foreach($clasess as $cls)
+                                            @foreach($classes as $cls)
                                                 <option value="{{$cls->id}}" {{($amount->class_id == $cls->id) ? "selected":""}}>{{$cls->name}}</option>
                                             @endforeach
                                         </select>

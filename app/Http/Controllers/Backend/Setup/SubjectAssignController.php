@@ -3,23 +3,26 @@
 namespace App\Http\Controllers\Backend\Setup;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssignSubject;
+use App\Models\Subject;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Models\StudentClass;
 
 class SubjectAssignController extends Controller
 {
     public function view()
     {
-        $data['classId'] = StudentClass::all();
-        $data['feeCategories'] = StudentFeeCategory::all();
-        $data['feeAmount'] = StudentFeeAmount::select('fee_category_id')->groupBy('fee_category_id')->get();
-        return view('backend.setups.fee-amount.fee_amount_view', $data);
+        $data['allData'] = AssignSubject::select('class_id')->groupBy('class_id')->get();
+        return view('backend.setups.assign-subject.assign_subject_view', $data);
     }
 
     public function create()
     {
-        $data['feeCategories'] = StudentFeeCategory::all();
-        $data['className'] = StudentClass::all();
-        return view('backend.setups.fee-amount.fee_amount_create', $data);
+
+        $data['subjects'] = Subject::all();
+        $data['classes'] = StudentClass::all();
+        return view('backend.setups.assign-subject.assign_subject_create', $data);
     }
 
     /**
@@ -28,19 +31,21 @@ class SubjectAssignController extends Controller
      */
     public function store(Request $request)
     {
-        $classId = $request->class_id;
-        $countClass = count($classId);
-        if ($countClass) {
-            for ($i = 0; $i < $countClass; $i++) {
-                $feeAmount = new StudentFeeAmount();
-                $feeAmount->fee_category_id = $request->fee_category_id;
-                $feeAmount->class_id = $request->class_id[$i];
-                $feeAmount->amount = $request->amount[$i];
-                $save = $feeAmount->save();
+        $subjectId = $request->subject_id;
+        $countSubject = count($subjectId);
+        if ($countSubject) {
+            for ($i = 0; $i < $countSubject; $i++) {
+                $assignSubject = new AssignSubject();
+                $assignSubject->class_id = $request->class_id;
+                $assignSubject-> subject_id = $request->subject_id[$i];
+                $assignSubject->full_mark = $request->full_mark[$i];
+                $assignSubject->pass_mark = $request->pass_mark[$i];
+                $assignSubject->subjective_mark = $request->subjective_mark[$i];
+                $save = $assignSubject->save();
             }
         }
         if ($save) {
-            return redirect()->route('setup.fee.amount.view')->with('success', 'The amount saved successfully');
+            return redirect()->route('setup.subject.assign.view')->with('success', 'Subject assigned successfully');
         } else {
             return redirect()->back()->with('fail', 'Something wrong !');
         }
@@ -49,34 +54,37 @@ class SubjectAssignController extends Controller
     /**
      * @param $id
      */
-    public function edit($fee_category_id)
+    public function edit($class_id)
     {
-        $data['editData'] = StudentFeeAmount::where('fee_category_id', $fee_category_id)->get();
-        $data['fee_category'] = StudentFeeCategory::all();
-        $data['clasess'] = StudentClass::all();
-        return view('backend.setups.fee-amount.fee_amount_edit', $data);
+
+        $data['editData'] = AssignSubject::where('class_id',$class_id)->get();
+        $data['subjects'] = Subject::all();
+        $data['classes'] = StudentClass::all();
+        return view('backend.setups.assign-subject.assign_subject_edit', $data);
     }
 
     /**
      * @param Request $request
      */
-    public function update(Request $request, $fee_category_id)
+    public function update(Request $request, $class_id)
     {
-        if ($request->class_id == NULL) {
-            return redirect()->back()->with('errors', 'Sorry, you dont have any item!');
+        if ($request->subject_id == NULL) {
+            return redirect()->back()->with('errors', 'Sorry, you dont have any subject !');
         } else {
-            StudentFeeAmount::where('fee_category_id', $fee_category_id)->delete();
-            $countClass = count($request->class_id);
-            for ($i = 0; $i < $countClass; $i++) {
-                $feeAmount = new StudentFeeAmount();
-                $feeAmount->fee_category_id = $request->fee_category_id;
-                $feeAmount->class_id = $request->class_id[$i];
-                $feeAmount->amount = $request->amount[$i];
-                $save = $feeAmount->save();
+            AssignSubject::where('class_id', $class_id)->delete();
+            $countSubject = count($request->subject_id);
+            for ($i = 0; $i < $countSubject; $i++) {
+                $assignSubject = new AssignSubject();
+                $assignSubject->class_id = $request->class_id;
+                $assignSubject-> subject_id = $request->subject_id[$i];
+                $assignSubject->full_mark = $request->full_mark[$i];
+                $assignSubject->pass_mark = $request->pass_mark[$i];
+                $assignSubject->subjective_mark = $request->subjective_mark[$i];
+                $save = $assignSubject->save();
             }
         }
         if ($save) {
-            return redirect()->route('setup.fee.amount.view')->with('success', 'The update successfully');
+            return redirect()->route('setup.subject.assign.view')->with('success', 'Assign subject updated successfully');
         } else {
             return redirect()->back()->with('fail', 'Something wrong !');
         }
@@ -86,10 +94,10 @@ class SubjectAssignController extends Controller
      * @param $fee_category_id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function details($fee_category_id)
+    public function details($class_id)
     {
-        $data['amountDetails'] = StudentFeeAmount::where('fee_category_id', $fee_category_id)->get();
-        return view('backend.setups.fee-amount.fee_amount_details', $data);
+        $data['editData'] = AssignSubject::where('class_id', $class_id)->get();
+        return view('backend.setups.assign-subject.assign_subject_details', $data);
     }
 
     /**

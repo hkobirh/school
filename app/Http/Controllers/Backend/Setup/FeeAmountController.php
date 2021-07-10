@@ -57,7 +57,7 @@ class FeeAmountController extends Controller
     {
         $data['editData'] = StudentFeeAmount::where('fee_category_id', $fee_category_id)->get();
         $data['fee_category'] = StudentFeeCategory::all();
-        $data['clasess'] = StudentClass::all();
+        $data['classes'] = StudentClass::all();
         return view('backend.setups.fee-amount.fee_amount_edit', $data);
     }
 
