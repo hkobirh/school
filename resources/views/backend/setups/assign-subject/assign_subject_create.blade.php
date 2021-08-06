@@ -42,7 +42,8 @@
                 </div>
                 <div class="card-body">
                     <div class="ml-auto">
-                        <form action="{{route('setup.subject.assign.add')}}" method="post" enctype="multipart/form-data" id="myForm">
+                        <form action="{{route('setup.subject.assign.add')}}" method="post" enctype="multipart/form-data"
+                              id="myForm">
                             @csrf
                             <div class="add-item">
                                 <div class="form-row">
@@ -83,7 +84,8 @@
                                     </div>
                                     <div class="col-md-2 form-group">
                                         <label for="gmark">Subjective mark :</label>
-                                        <input class="result form-control" type="text" id="gmark" name="subjective_mark[]"
+                                        <input class="result form-control" type="text" id="gmark"
+                                               name="subjective_mark[]"
                                                value="{{old('subjective_mark')}}" placeholder="Subjective mark">
                                         <span class="text-danger">@error('subjective_mark'){{$message}}@enderror</span>
                                     </div>
@@ -108,24 +110,32 @@
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <label for="fmark">Full mark :</label>
-                                                    <input class="result form-control" type="text" id="fmark" name="full_mark[]"
+                                                    <input class="result form-control" type="text" id="fmark"
+                                                           name="full_mark[]"
                                                            value="{{old('full_mark')}}" placeholder="Full mark">
-                                                    <span class="text-danger">@error('full_mark'){{$message}}@enderror</span>
+                                                    <span
+                                                        class="text-danger">@error('full_mark'){{$message}}@enderror</span>
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <label for="pmark">Pass mark :</label>
-                                                    <input class="result form-control" type="text" id="pmark" name="pass_mark[]"
+                                                    <input class="result form-control" type="text" id="pmark"
+                                                           name="pass_mark[]"
                                                            value="{{old('pass_mark')}}" placeholder="Pass mark">
-                                                    <span class="text-danger">@error('full_mark'){{$message}}@enderror</span>
+                                                    <span
+                                                        class="text-danger">@error('full_mark'){{$message}}@enderror</span>
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <label for="gmark">Subjective mark :</label>
-                                                    <input class="result form-control" type="text" id="gmark" name="subjective_mark[]"
-                                                           value="{{old('subjective_mark')}}" placeholder="Subjective mark">
-                                                    <span class="text-danger">@error('subjective_mark'){{$message}}@enderror</span>
+                                                    <input class="result form-control" type="text" id="gmark"
+                                                           name="subjective_mark[]"
+                                                           value="{{old('subjective_mark')}}"
+                                                           placeholder="Subjective mark">
+                                                    <span
+                                                        class="text-danger">@error('subjective_mark'){{$message}}@enderror</span>
                                                 </div>
 
-                                                <div class="col-md-1 form-group" style="margin-top: 30px;min-width: 100px;">
+                                                <div class="col-md-1 form-group"
+                                                     style="margin-top: 30px;min-width: 100px;">
                                                     <div class="form-row">
                                                         <button class="btn btn-light-info addMoreBtn"><i
                                                                 class="bx bx-plus"></i></button>
@@ -138,7 +148,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="lni lni-circle-plus"></i> Assign Subject
+                            <button type="submit" class="btn btn-primary"><i class="lni lni-circle-plus"></i> Assign
+                                Subject
                             </button>
                         </form>
                     </div>
@@ -147,8 +158,95 @@
         </div>
     </div>
 
+
+    {{--==========================================================================================--}}
+
+
+{{--
+
+    <div class="container">
+        <table class="_table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th width="50px">
+                    <div class="action_container">
+                        <button class="success" onclick="create_tr('table_body')">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody id="table_body">
+            <tr>
+                <td>
+                    <input type="text" class="form_control" placeholder="Jhon Dhoe">
+                </td>
+                <td>
+                    <input type="text" class="form_control" placeholder="+880177x-xxxxxx">
+                </td>
+                <td>
+                    <textarea class="form_control" placeholder="Enter Your Address..."></textarea>
+                </td>
+                <td>
+                    <div class="action_container">
+                        <button class="danger" onclick="remove_tr(this)">
+                            <i class="fa fa-close"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function create_tr(table_id) {
+            let table_body = document.getElementById(table_id),
+                first_tr = table_body.firstElementChild
+            tr_clone = first_tr.cloneNode(true);
+
+            table_body.append(tr_clone);
+
+            clean_first_tr(table_body.firstElementChild);
+        }
+
+        function clean_first_tr(firstTr) {
+            let children = firstTr.children;
+
+            children = Array.isArray(children) ? children : Object.values(children);
+            children.forEach(x => {
+                if (x !== firstTr.lastElementChild) {
+                    x.firstElementChild.value = '';
+                }
+            });
+        }
+
+
+        function remove_tr(This) {
+            if (This.closest('tbody').childElementCount == 1) {
+                alert("You Don't have Permission to Delete This ?");
+            } else {
+                This.closest('tr').remove();
+            }
+        }
+    </script>
+
+
+
+
+
+
+--}}
+
+
+    {{--==================================================================================================--}}
 @section('page-script')
     <script type="text/javascript">
+
         $(document).ready(function () {
             var counter = 0;
             $(document).on("click", ".addMoreBtn", function (e) {

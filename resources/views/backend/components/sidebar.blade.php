@@ -14,7 +14,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="">
+            <a href="{{route('dashboard')}}">
                 <div class="parent-icon icon-color-5"> <i class="bx bxs-dashboard"></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -48,6 +48,18 @@
                 <li> <a href="{{route('setup.exam.type.view')}}"><i class="bx bx-circle"></i>Manage exam type</a></li>
                 <li> <a href="{{route('setup.subject.view')}}"><i class="bx bx-circle"></i>Manage subject</a></li>
                 <li> <a href="{{route('setup.subject.assign.view')}}"><i class="bx bx-circle"></i>Manage assign subject</a></li>
+                <li> <a href="{{route('setup.designation.view')}}"><i class="bx bx-circle"></i>Manage designation</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon icon-color-1"><i class="bx bx-user"></i>
+                </div>
+                <div class="menu-title">Manage Student</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('student.registration.view')}}"><i class="bx bx-circle"></i>Registration</a></li>
             </ul>
         </li>
 

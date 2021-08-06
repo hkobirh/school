@@ -76,7 +76,7 @@
                     <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-toggle="dropdown">
                         <div class="media user-box align-items-center">
                             <div class="media-body user-info">
-                                <p class="user-name mb-0">Jessica Doe</p>
+                                <p class="user-name mb-0">{{auth()->user()->name}}</p>
                                 <p class="designattion mb-0">Available</p>
                             </div>
                             <img src="{{asset('theme/backend/assets/images/avatars/avatar-1.png')}}" class="user-img" alt="user avatar">
@@ -84,8 +84,13 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="javascript:;"><i
                                 class="bx bx-user"></i><span>Profile</span></a>
-                        <div class="dropdown-divider mb-0"></div>	<a class="dropdown-item" href="javascript:;"><i
-                                class="bx bx-power-off"></i><span>Logout</span></a>
+                        <div class="dropdown-divider mb-0"></div>
+
+                        <form action="{{route('logout')}}" method="post">
+                            @csrf
+                            <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit()"> <i class="bx bx-power-off"></i><span>Logout</span></a>
+                        </form>
+
                     </div>
                 </li>
             </ul>

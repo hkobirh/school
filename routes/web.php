@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::prefix('/user')->name('user.')->group(function (){
+    Route::get('/login_form',[AuthController::class,'login_form'])->name('login_form');
+    Route::post('/login',[AuthController::class,'login'])->name('login');
+});
 
 require __DIR__.'/setup.php';
+require __DIR__.'/manage_student.php';

@@ -9,6 +9,7 @@ class AssignSubject extends Model
 {
     use HasFactory;
 protected $fillable = ['id','class_id'];
+
     public function student_class(){
         return $this->belongsTo(StudentClass::class,'class_id','id');
     }
