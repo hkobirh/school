@@ -26,6 +26,7 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('theme/backend/assets/css/app.css')}}" />
     <link rel="stylesheet" href="{{asset('theme/backend/assets/css/dark-sidebar.css')}}" />
+    <link rel="stylesheet" href="{{asset('theme/backend/assets/css/jquery-ui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('theme/backend/assets/css/dark-theme.css')}}" />
 </head>
 
@@ -70,8 +71,11 @@
 <script src="{{asset('theme/backend/assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js')}}"></script>
 <script src="{{asset('theme/backend/assets/plugins/vectormap/jquery-jvectormap-au-mill.js')}}"></script>
 <script src="{{asset('theme/backend/assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
+<script src="{{asset('theme/backend/assets/js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('theme/backend/assets/js/index.js')}}"></script>
 <!-- App JS -->
+@yield('script')
+<script src="{{asset('theme/backend/assets/js/handlebars.js')}}"></script>
 @yield('page-script')
 <script src="{{asset('theme/backend/assets/js/app.js')}}"></script>
 <script>

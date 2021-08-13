@@ -13,6 +13,8 @@ use App\Http\Controllers\Backend\Setup\SubjectController;
 use App\Http\Controllers\Backend\Setup\SubjectAssignController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
+use App\Http\Controllers\Backend\Student\StudentRollController;
+use App\Http\Controllers\Backend\Student\StudentRegFeeController;
 
 
 Route::prefix('admin')->group(function () {
@@ -106,7 +108,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('students')->name('student.')->group(function () {
-        //Registration routes
+        //Student Registration routes
         Route::get('/reg/view', [StudentRegController::class, 'view'])->name('registration.view');
         Route::get('/reg/create', [StudentRegController::class, 'create'])->name('registration.create');
         Route::post('/reg/add', [StudentRegController::class, 'store'])->name('registration.add');
@@ -116,7 +118,21 @@ Route::prefix('admin')->group(function () {
         Route::get('/year_class_wise', [StudentRegController::class, 'yearClassWise'])->name('year.class.wise');
         Route::get('/reg/promotion/{student_id}', [StudentRegController::class, 'student_promotion'])->name('registration.promotion');
         Route::post('/reg/promotion/{student_id}', [StudentRegController::class, 'promotion_store'])->name('registration.promotion');
-        Route::get('/reg/details/{student_id}', [StudentRegController::class, 'details'])->name('registration.details');
+        Route::get('/reg/details/{student_id}', [StudentRegController::class, 'generatePdf'])->name('registration.details');
+
+        //Student Roll generate routes
+        Route::get('/roll/create', [StudentRollController::class, 'roll_create'])->name('roll.create');
+        //Get student by ajax search for roll generate
+        Route::get('/roll/get_student', [StudentRollController::class, 'getStudent'])->name('roll.get-student');
+        Route::post('/roll/add', [StudentRollController::class, 'roll_store'])->name('roll.add');
+
+        // Student registration fee
+        Route::get('/reg/fee', [StudentRegFeeController::class, 'create'])->name('reg.fee');
+        //Get student by ajax search for reg fee generate
+        Route::get('/reg/get_student', [StudentRegFeeController::class, 'getStudent'])->name('reg.get-student');
+        Route::post('/reg/fee/add', [StudentRegFeeController::class, 'store'])->name('reg.fee.add');
+        Route::get('/reg/fee/payslip', [StudentRegFeeController::class, 'payslip'])->name('reg.fee.payslip');
+
 
     });
 

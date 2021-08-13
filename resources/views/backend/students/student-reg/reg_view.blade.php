@@ -92,8 +92,8 @@
                             </td>
                             <td>
                                 <a href="{{route('student.registration.edit',$value->student_id)}}" class="btn btn-info btn-sm"><i class=" bx bx-pencil"></i></a>
-                                <a target="_blank" href="{{route('student.registration.details',$value->student_id)}}" class="btn btn-info btn-sm"><i class=" bx bx-show-alt"></i></a>
-                                <a href="{{route('student.registration.promotion',$value->student_id)}}" class="btn btn-primary btn-sm"><i class="lni lni-forward"></i></a>
+                                <a target="_blank" href="{{route('student.registration.details',$value->student_id)}}" class="btn btn-success btn-sm"><i class=" bx bx-show-alt"></i></a>
+                                <a href="{{route('student.registration.promotion',$value->student_id)}}" class="btn btn-warning btn-sm"><i class="lni lni-forward"></i></a>
                             </td>
                         </tr>
                     @endforeach

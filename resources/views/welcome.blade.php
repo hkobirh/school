@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') || Advanced Soft It</title>
+    <link rel="icon" href="{{asset('theme/backend/assets/images/favicon-32x32.png')}}" type="image/png" />
     <!-- Bootstrap core CSS -->
     <link href="{{asset('theme/backend/assets/css/bootstrap.min.css')}}" rel="stylesheet">
 </head>

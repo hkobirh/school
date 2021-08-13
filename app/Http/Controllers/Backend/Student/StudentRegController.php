@@ -5,16 +5,15 @@ namespace App\Http\Controllers\Backend\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Student\AssignStudent;
 use App\Models\Student\DiscountStudent;
-use App\Models\Student\Registration;
 use App\Models\StudentClass;
 use App\Models\StudentGroup;
 use App\Models\StudentShift;
+use App\Models\Designation;
 use App\Models\User;
 use App\Models\Year;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Exception;
 
 class StudentRegController extends Controller
@@ -283,10 +282,10 @@ class StudentRegController extends Controller
         }
     }
 
-    public function details($student_id)
+    public function generatePdf($student_id)
     {
-        $data['allData'] = AssignStudent::with('student', 'discount')->where('student_id', $student_id)->first();
-        $pdf = PDF::loadView('backend.students.student-reg.registration_pdf', $data);
+        $allData['details'] = AssignStudent::with('student')->where('student_id', $student_id)->first();
+        $pdf = PDF::loadView('backend.students.student-reg.registration_pdf',$allData);
         return $pdf->stream();
     }
 
@@ -305,3 +304,9 @@ class StudentRegController extends Controller
         }
     }
 }
+
+/*$img = $allData['student']['image'];
+$path = base_path('public/uploads/students_image/'.$img);
+$type = pathinfo($path,PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$pic = 'data:image/'.$type.';base64,'.base64_decode($data);*/

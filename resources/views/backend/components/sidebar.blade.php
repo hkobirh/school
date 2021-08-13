@@ -60,6 +60,8 @@
             </a>
             <ul>
                 <li> <a href="{{route('student.registration.view')}}"><i class="bx bx-circle"></i>Registration</a></li>
+                <li> <a href="{{route('student.roll.create')}}"><i class="bx bx-circle"></i>Student roll</a></li>
+                <li> <a href="{{route('student.reg.fee')}}"><i class="bx bx-circle"></i>Registration fee</a></li>
             </ul>
         </li>
 

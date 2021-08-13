@@ -9,7 +9,7 @@
         <div class="pl-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
-                    <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-home-alt'></i></a>
+                    <li class="breadcrumb-item"><a href="#"><i class='bx bx-home-alt'></i></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
                 </ol>
@@ -40,7 +40,6 @@
                 <div class="card-header">
                     <h3>Student registration</h3>
                 </div>
-
                 <div class="card-body">
                     <form action="{{route('student.registration.add')}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -135,8 +134,8 @@
                             </span>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="dob">Date of Birth : <font class="text-danger">*</font></label>
-                            <input type="date" class="form-control form-control-sm" value="{{old('dob')}}" name="dob" id="dob">
+                            <label for="datepicker">Date of Birth : <font class="text-danger">*</font></label>
+                            <input type="text" class="form-control form-control-sm" value="{{old('dob')}}" autocomplete="off" name="dob" id="datepicker">
                             <span class="text-danger">
                                 @error('dob')
                                 {{$message}}
@@ -227,6 +226,8 @@
         </div>
     </div>
     </div>
+
+@endsection
 @section('page-script')
     <script type="text/javascript">
         $(document).ready(function () {
@@ -238,8 +239,14 @@
                 reader.readAsDataURL(e.target.files['0']);
             })
         })
+
+        $(document).ready(function (){
+            $('#datepicker').datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true
+            });
+        })
     </script>
 @stop
-
-@endsection
 
