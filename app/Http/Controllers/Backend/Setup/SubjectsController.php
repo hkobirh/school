@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Backend\Setup;
 
 use App\Http\Controllers\Controller;
-use App\Models\Subject;
+use App\Models\Subjects;
 use Illuminate\Http\Request;
 
-class SubjectController extends Controller
+
+class SubjectsController extends Controller
 {
     public function view()
     {
-        $data = Subject::all();
+        $data =Subjects::all();
         return view('backend.setups.subject.subject_view', compact('data'));
     }
-
-
     public function create()
     {
         return view('backend.setups.subject.subject_create');
@@ -31,7 +30,7 @@ class SubjectController extends Controller
             "name" => 'required|unique:subjects,name',
         ]);
 
-        $subject = new Subject();
+        $subject = new Subjects();
         $subject->name = $request->name;
         $save = $subject->save();
 
@@ -47,7 +46,7 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $subject = Subject::find($id);
+        $subject = Subjects::find($id);
         return view('backend.setups.subject.subject_edit', compact('subject'));
     }
 
@@ -57,7 +56,7 @@ class SubjectController extends Controller
     public function update(Request $request, $id)
     {
         //Validate forms
-        $subject = Subject::find($id);
+        $subject = Subjects::find($id);
         $request->validate([
             "name" => 'required|unique:subjects,name',
         ]);
@@ -76,7 +75,8 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($id)
-    {
+    { 
+        
         $year = Year::find($id);
         $Ok = $year->delete();
         if ($Ok) {
@@ -85,4 +85,5 @@ class SubjectController extends Controller
             return redirect()->back()->with('fail', 'Data is not deleted!');
         }
     }
+
 }

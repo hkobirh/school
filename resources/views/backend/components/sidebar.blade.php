@@ -6,7 +6,7 @@
             <img src="{{asset('theme/backend/assets/images/logo-icon.png')}}" class="logo-icon-2" alt="" />
         </div>
         <div>
-            <h4 class="logo-text">Syndash</h4>
+            <h4 class="logo-text">HumayunK</h4>
         </div>
         <a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
         </a>
@@ -46,7 +46,7 @@
                 <li> <a href="{{route('setup.fee.category.view')}}"><i class="bx bx-circle"></i>Manage fee type</a></li>
                 <li> <a href="{{route('setup.fee.amount.view')}}"><i class="bx bx-circle"></i>Manage fee amount</a></li>
                 <li> <a href="{{route('setup.exam.type.view')}}"><i class="bx bx-circle"></i>Manage exam type</a></li>
-                <li> <a href="{{route('setup.subject.view')}}"><i class="bx bx-circle"></i>Manage subject</a></li>
+                <li> <a href="{{route('setup.subject.view')}}"><i class="bx bx-circle"></i>Manage subjects</a></li>
                 <li> <a href="{{route('setup.subject.assign.view')}}"><i class="bx bx-circle"></i>Manage assign subject</a></li>
                 <li> <a href="{{route('setup.designation.view')}}"><i class="bx bx-circle"></i>Manage designation</a></li>
             </ul>

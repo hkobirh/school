@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('user:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('user:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});

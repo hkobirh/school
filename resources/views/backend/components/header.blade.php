@@ -79,7 +79,7 @@
                                 <p class="user-name mb-0">{{auth()->user()->name}}</p>
                                 <p class="designattion mb-0">Available</p>
                             </div>
-                            <img src="{{asset('theme/backend/assets/images/avatars/avatar-1.png')}}" class="user-img" alt="user avatar">
+                            <img src="{{asset('theme/backend/assets/images/avatars/kobir.png')}}" class="user-img" alt="user avatar">
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="javascript:;"><i

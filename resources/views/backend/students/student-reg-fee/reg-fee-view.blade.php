@@ -54,7 +54,7 @@
             </form>
 
             <div class="card-body">
-                <div id="DocumentResult">test</div>
+                <div id="DocumentResult">Test test test Test test test</div>
                     <script id="document-template" type="text/x-handlebars-template">
                         <table class="table-sm table-bordered table-striped" style="width: 100%;">
                             <thead>

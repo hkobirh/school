@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::prefix('/user')->name('user.')->group(function (){
     Route::get('/login_form',[AuthController::class,'login_form'])->name('login_form');
     Route::post('/login',[AuthController::class,'login'])->name('login');

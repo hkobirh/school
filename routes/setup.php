@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Setup\ExamTypeController;
 use App\Http\Controllers\Backend\Setup\SubjectController;
 use App\Http\Controllers\Backend\Setup\SubjectAssignController;
 use App\Http\Controllers\Backend\Setup\DesignationController;
+use App\Http\Controllers\Backend\Setup\SubjectsController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
 use App\Http\Controllers\Backend\Student\StudentRegFeeController;
@@ -30,7 +31,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/student/class/edit/{id}', [ClassController::class, 'edit'])->name('student.class.edit');
         Route::post('/student/class/edit/{id}', [ClassController::class, 'update'])->name('student.class.update');
         Route::get('/student/class/delete/{id}', [ClassController::class, 'delete'])->name('student.class.delete');
-
+ 
         //Student year routes
         Route::get('/student/year/view', [YearController::class, 'view'])->name('year.view');
         Route::get('/student/year/create', [YearController::class, 'create'])->name('year.create');
@@ -81,12 +82,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/exam/type/delete/{id}', [ExamTypeController::class, 'delete'])->name('exam.type.delete');
 
         //Student subject routes
-        Route::get('/subject/view', [SubjectController::class, 'view'])->name('subject.view');
-        Route::get('/subject/create', [SubjectController::class, 'create'])->name('subject.create');
-        Route::post('/subject/add', [SubjectController::class, 'store'])->name('subject.add');
-        Route::get('/subject/edit/{id}', [SubjectController::class, 'edit'])->name('subject.edit');
-        Route::post('/subject/edit/{id}', [SubjectController::class, 'update'])->name('subject.update');
-        Route::get('/subject/delete/{id}', [SubjectController::class, 'delete'])->name('subject.delete');
+        Route::get('/subject/view', [SubjectsController::class, 'view'])->name('subject.view');
+        Route::get('/subject/create', [SubjectsController::class, 'create'])->name('subject.create');
+        Route::post('/subject/add', [SubjectsController::class, 'store'])->name('subject.add');
+        Route::get('/subject/edit/{id}', [SubjectsController::class, 'edit'])->name('subject.edit');
+        Route::post('/subject/edit/{id}', [SubjectsController::class, 'update'])->name('subject.update');
+        Route::get('/subject/delete/{id}', [SubjectsController::class, 'delete'])->name('subject.delete');
 
         //Assign subject routes
         Route::get('/assign/subject/view', [SubjectAssignController::class, 'view'])->name('subject.assign.view');
